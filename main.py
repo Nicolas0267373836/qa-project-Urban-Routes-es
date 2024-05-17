@@ -184,7 +184,7 @@ class TestUrbanRoutes:
         routes_page.select_add_button()
         time.sleep(1)
         routes_page.select_x_button()
-        conductor_message = "Muéstrame el camino al museo"
+        conductor_message = "Muéstrame el museo"
         routes_page.fill_conductor_message(conductor_message)
         # Solicitar una manta y un panuelo
         routes_page.request_blanket_and_tissues()
