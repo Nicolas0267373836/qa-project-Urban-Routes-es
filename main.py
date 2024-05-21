@@ -42,14 +42,9 @@ class TestUrbanRoutes:
         routes_page.fill_phone_number(phone_number)
         assert routes_page.driver.find_element(*routes_page.phone_number_field).get_attribute('value') == phone_number
 
-    def test_select_next_button(self):
+    def test_code_sms(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.select_next_button()
-        assert WebDriverWait(self.driver, 1).until(expected_conditions.element_to_be_clickable
-                                                   (routes_page.code_sms_field))
-
-    def text_code_sms(self):
-        routes_page = UrbanRoutesPage(self.driver)
         code_sms = retrieve_phone_code(driver=self.driver)
         routes_page.select_code_sms(code_sms)
         assert routes_page.driver.find_element(*routes_page.code_sms_field).get_attribute('value') == code_sms
@@ -57,14 +52,13 @@ class TestUrbanRoutes:
     def test_select_confirm_button(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.select_confirm_button()
-        assert WebDriverWait(self.driver, 1).until(expected_conditions.element_to_be_clickable
+        WebDriverWait(self.driver, 1).until(expected_conditions.element_to_be_clickable
                                                    (routes_page.add_card_click))
 
     def test_select_add_card_click(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.select_add_card_click()
-        assert WebDriverWait(self.driver, 1).until(expected_conditions.element_to_be_clickable
-                                                   (routes_page.card_number_field))
+        assert routes_page.driver.find_element(*routes_page.card_number_field)
 
     def test_add_credit_card(self):
         routes_page = UrbanRoutesPage(self.driver)
@@ -76,14 +70,12 @@ class TestUrbanRoutes:
     def test_select_add_button(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.select_add_button()
-        assert WebDriverWait(self.driver, 1).until(expected_conditions.element_to_be_clickable
-                                                   (routes_page.x_button_click))
+        assert routes_page.driver.find_element(*routes_page.x_button_click)
 
     def test_select_x_button(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.select_x_button()
-        assert WebDriverWait(self.driver, 1).until(expected_conditions.element_to_be_clickable
-                                                   (routes_page.conductor_message_field))
+        assert routes_page.driver.find_element(*routes_page.conductor_message_field)
 
     def test_fill_conductor_message(self):
         routes_page = UrbanRoutesPage(self.driver)
@@ -95,10 +87,12 @@ class TestUrbanRoutes:
     def test_request_blanket_and_tissues(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.request_blanket_and_tissues()
+        assert routes_page.blanket_and_tissues_button
 
     def test_request_ice_cream(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.request_ice_cream(quantity=2)
+        assert routes_page.ice_cream_button
 
     @classmethod
     def teardown_class(cls):

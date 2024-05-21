@@ -1,3 +1,4 @@
+import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
@@ -61,9 +62,7 @@ class UrbanRoutesPage:
         phone_number_input.send_keys(phone_number)
 
     def select_code_sms(self, code_sms):
-        code_sms_input = self.driver.find_element(*self.code_sms_field)
-        code_sms_input.clear()  # Limpiar el campo de entrada
-        code_sms_input.send_keys(code_sms)
+        self.driver.find_element(*self.code_sms_field).send_keys(code_sms)
 
     def add_credit_card(self, card_number, code_card):
         add_card_button = WebDriverWait(self.driver, 1).until(expected_conditions.element_to_be_clickable
@@ -103,9 +102,7 @@ class UrbanRoutesPage:
         next_button.click()
 
     def select_add_card_click(self):
-        add_card_click = WebDriverWait(self.driver, 1).until(expected_conditions.element_to_be_clickable
-                                                             (self.add_card_click))
-        add_card_click.click()
+        self.driver.find_element(*self.add_card_click).click()
 
     def select_confirm_button(self):
         confirm_button = WebDriverWait(self.driver, 1).until(expected_conditions.element_to_be_clickable
@@ -113,8 +110,8 @@ class UrbanRoutesPage:
         confirm_button.click()
 
     def select_add_button(self):
-        add_button = WebDriverWait(self.driver, 1).until(expected_conditions.element_to_be_clickable
-                                                          (self.add_button_click))
+        time.sleep(1)
+        add_button = self.driver.find_element(*self.add_button_click)
         add_button.click()
 
     def select_x_button(self):
