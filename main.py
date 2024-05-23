@@ -7,6 +7,9 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 class TestUrbanRoutes:
+    def __init__(self):
+        pass
+
     driver = None
 
     @classmethod
