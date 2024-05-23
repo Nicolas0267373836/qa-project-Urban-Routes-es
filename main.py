@@ -34,6 +34,7 @@ class TestUrbanRoutes:
     def test_select_comfort_tariff(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.select_comfort_tariff()
+        assert routes_page.select_comfort_tariff
 
     def test_fill_phone_number(self):
         routes_page = UrbanRoutesPage(self.driver)
@@ -53,7 +54,7 @@ class TestUrbanRoutes:
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.select_confirm_button()
         WebDriverWait(self.driver, 1).until(expected_conditions.element_to_be_clickable
-                                                   (routes_page.add_card_click))
+                                            (routes_page.add_card_click))
 
     def test_select_add_card_click(self):
         routes_page = UrbanRoutesPage(self.driver)
@@ -87,12 +88,25 @@ class TestUrbanRoutes:
     def test_request_blanket_and_tissues(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.request_blanket_and_tissues()
-        assert routes_page.blanket_and_tissues_button
+        assert routes_page.blanket_and_tissues_checkbox
 
     def test_request_ice_cream(self):
         routes_page = UrbanRoutesPage(self.driver)
         routes_page.request_ice_cream(quantity=2)
-        assert routes_page.ice_cream_button
+        counter_value_element = routes_page.find_ice_cream_element()
+        assert counter_value_element.text == '2'
+
+    def test_reserve_taxi_click(self):
+        routes_page = UrbanRoutesPage(self.driver)
+        routes_page.reserve_taxi_button()
+        modal_title_element = routes_page.find_modal_title()
+        assert modal_title_element.text == 'Buscar automóvil'
+
+    def test_modal_card_text(self):
+        routes_page = UrbanRoutesPage(self.driver)
+        routes_page.details_button_()
+        modal_title_element = routes_page.card_text()
+        assert modal_title_element.text == 'East 2nd Street, 601'
 
     @classmethod
     def teardown_class(cls):

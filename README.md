@@ -14,3 +14,8 @@
 - Los localizadores son correctos y apuntan a los elementos adecuados en la interfaz.
 - La función retrieve_code funciona correctamente para obtener el código de confirmación.
 - El resultado final obtenido es el esperado según las especificaciones del proyecto.
+- Los comandos y requisitos para ejecutar las pruebas del proyecto son las siguientes: 
+- Primero tener "pytest" actualizado.
+- Asegúrate de tener el controlador de Chrome (chromedriver) en tu PATH o en la misma carpeta que tu script
+- Organiza las pruebas en el directorio de forma correcta.
+- Todas las pruebas deben de empezar con test para que pytest pueda reconocerlas.
