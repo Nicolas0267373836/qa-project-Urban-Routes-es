@@ -32,6 +32,8 @@ class UrbanRoutesPage:
     modal_title = (By.CLASS_NAME, 'order-header-title')
     details_button = (By.XPATH, '//*[@id="root"]/div/div[5]/div[2]/div[2]/div[1]/div[3]/button')
     direction_text = (By.CLASS_NAME, 'o-d-h')
+    phone_confirmation_number = (By.XPATH, "//div[@class='np-text']")
+    card_text_confirmation = (By.XPATH, "//div[@class='pp-value-text']")
 
     def __init__(self, driver):
         self.driver = driver
@@ -145,3 +147,11 @@ class UrbanRoutesPage:
     def card_text(self):
         card_text = self.driver.find_element(*self.direction_text)
         return card_text
+
+    def get_phone_number_confirmation(self):
+        return WebDriverWait(self.driver, 1).until(
+            expected_conditions.visibility_of_element_located(self.phone_confirmation_number)).text
+
+    def get_payment_method_confirmation(self):
+        return WebDriverWait(self.driver, 1).until(
+            expected_conditions.visibility_of_element_located(self.card_text_confirmation)).text

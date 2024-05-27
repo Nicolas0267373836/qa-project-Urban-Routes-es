@@ -79,6 +79,16 @@ class TestUrbanRoutes:
         routes_page.select_x_button()
         assert routes_page.driver.find_element(*routes_page.conductor_message_field)
 
+    def test_confirm_phone_number(self):
+        routes_page = UrbanRoutesPage(self.driver)
+        phone_number_confirmation = routes_page.get_phone_number_confirmation()
+        assert phone_number_confirmation == "+1 123 123 12 12"
+
+    def test_confirm_payment_method(self):
+        routes_page = UrbanRoutesPage(self.driver)
+        payment_method_confirmation = routes_page.get_payment_method_confirmation()
+        assert payment_method_confirmation == "Tarjeta"
+
     def test_fill_conductor_message(self):
         routes_page = UrbanRoutesPage(self.driver)
         conductor_message = "Muéstrame el museo"
