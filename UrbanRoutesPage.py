@@ -8,26 +8,26 @@ class UrbanRoutesPage:
     from_field = (By.ID, 'from')
     to_field = (By.ID, 'to')
     order_a_taxi_button = (By.CLASS_NAME, 'button.button.round')
-    comfort_tariff_button = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[1]/div[5]')
+    comfort_tariff_button = (By.XPATH, "//div[text()='Comfort']")
     phone_number_field_click = (By.CLASS_NAME, 'np-text')
     phone_number_field = (By.XPATH, '//*[@id="phone"]')
     next_button_in_phone_number = (By.CLASS_NAME, 'button.button.full')
-    confirm_button = (By.XPATH, '//*[@id="root"]/div/div[1]/div[2]/div[2]/form/div[2]/button[1]')
+    confirm_button = (By.XPATH, "//button[text()='Confirmar']")
     code_sms_field = (By.ID, 'code')
     add_card_click = (By.CLASS_NAME, 'pp-text')
-    add_card_button = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[1]/div[2]/div[3]/div[2]')
+    add_card_button = (By.XPATH, "//div[@class='pp-row disabled']//div[text()='Agregar tarjeta']")
     # Selector del botón para agregar tarjeta de crédito
     card_number_field = (By.ID, 'number')  # Selector del campo de entrada del número de tarjeta
     code_card_field = (By.CSS_SELECTOR, "input[placeholder='12']")
-    add_button_click = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]/form/div[3]/button[1]')
-    x_button_click = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[1]/button')
+    add_button_click = (By.XPATH, "//button[text()='Agregar']")
+    x_button_click = (By.XPATH, "//div[@class='payment-picker open']//div[@class='modal']//div[@class='section "
+                                "active']//button[@class='close-button section-close']")
     conductor_message_field = (By.ID, 'comment')
     blanket_and_tissues_checkbox = (By.XPATH,
                                     '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div['
                                     '2]/div/span')
-    counter_value_field = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div['
-                                     '3]/div/div[2]/div[1]/div/div[2]/div/div[2]')
-    reserve_button = (By.XPATH, '//*[@id="root"]/div/div[3]/div[4]/button')
+    counter_value_field = (By.CLASS_NAME, 'counter-value')
+    reserve_button = (By.XPATH, "//span[@class='smart-button-secondary']")
     plus_button = (By.CLASS_NAME, 'counter-plus')
     modal_title = (By.CLASS_NAME, 'order-header-title')
     details_button = (By.XPATH, '//*[@id="root"]/div/div[5]/div[2]/div[2]/div[1]/div[3]/button')
